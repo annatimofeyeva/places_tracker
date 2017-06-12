@@ -9,9 +9,9 @@ function Destination(city, country){
   this.cityName = city;
   this.countryName = country;
 }
- Destination.prototype.fullDestination = function(){
+ /*Destination.prototype.fullDestination = function() {
    return this.cityName + ", " + this.countryName;
-}
+ }*/
 function resetFields() {
   $("#new-city-name").val("");
   $("#new-country-name").val("");
@@ -34,24 +34,24 @@ $(document).ready(function(){
   event.preventDefault();
 
   var inputtedSeasonName = $("#new-season-name").val();
-  var inputtedThingName = $("input#add-thing-name").val();
+  var inputtedThingName = $("#new-thing").val();
 
   var newTracker = new Tracker(inputtedSeasonName, inputtedThingName);
+  console.log(newTracker);
   $(".city_country").each(function(){
   var inputtedCityName = $("input#new-city-name").val();
   var inputtedCountryName = $("input#new-country-name").val();
   var newDestination = new Destination (inputtedCityName, inputtedCountryName);
-  console.log(newDestination);
-  newTracker.locationName.push(newDestination);
-  console.log(newTracker.locationName);
-});
+  //newTracker.locationName.push(newDestination);
 
-$("ul#list").append("<li><span class='contact'>" + newDestination.fullDestination() + "</span></li>");
+  });
+
+$("ul#list").append("<li><span class='contact'>" + newDestination.inputtedCityName + "</span></li>");
 
 
 $(".contact").last().click(function() {
       $("#show-contact").show();
-      $("#show-contact h3").text(newTracker.fullDestination());
+      //$("#show-contact h3").text(newTracker.fullDestination());
       $("#new-city-name").text(newDestination.cityName);
       $("#new-country-name").text(newDestination.countryName);
       $("#new-season-name").text(newTracker.seasonName);
